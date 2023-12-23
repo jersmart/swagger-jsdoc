@@ -8,18 +8,6 @@ const mergeWith = require('lodash.mergewith');
  * @param {array} globs - Array of globs and/or normal paths
  * @return {array} Array of fully-qualified paths
  */
-// function convertGlobPaths(globs) {
-//   return globs
-//     .map((globString) => {
-//       // Check if the globString is a directory
-//       if (fs.lstatSync(globString).isDirectory()) {
-//         // If it's a directory, append /** to match all files in the directory
-//         globString = path.join(globString, '**');
-//       }
-//       return glob.sync(globString);
-//     })
-//     .reduce((previous, current) => previous.concat(current), []);
-// }
 function convertGlobPaths(globs) {
   return globs
     .map((globString) => glob.sync(globString))
@@ -63,6 +51,9 @@ function extractYamlFromJsDoc(jsDocComment) {
  * @returns {{jsdoc: array, yaml: array}} JSDoc comments and Yaml files
  */
 function extractAnnotations(filePath, encoding = 'utf8') {
+  if (fs.lstatSync(filePath).isDirectory()) {
+    return { yaml: [], jsdoc: [] };
+  }
   const fileContent = fs.readFileSync(filePath, { encoding });
   const ext = path.extname(filePath);
   const jsDocRegex = /\/\*\*([\s\S]*?)\*\//gm;
