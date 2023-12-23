@@ -184,7 +184,6 @@ Imbedded within:
         ],
         failOnErrors: true,
       });
-      console.log('build', buildOutput);
       expect(buildOutput).toEqual(
         expect.objectContaining({
           swagger: '2.0',

@@ -1,7 +1,7 @@
 {
   "name": "@jersmart/swagger-jsdoc",
   "description": "Generates swagger doc based on JSDoc",
-  "version": "6.1.1",
+  "version": "6.1.2",
   "engines": {
     "node": ">=12.0.0"
   },
