@@ -1,7 +1,7 @@
 {
-  "name": "swagger-jsdoc",
+  "name": "@jersmart/swagger-jsdoc",
   "description": "Generates swagger doc based on JSDoc",
-  "version": "6.1.0",
+  "version": "6.1.1",
   "engines": {
     "node": ">=12.0.0"
   },
@@ -42,19 +42,19 @@
     "supertest": "6.0.1"
   },
   "license": "MIT",
-  "homepage": "https://github.com/Surnet/swagger-jsdoc",
+  "homepage": "https://github.com/jersmart/swagger-jsdoc",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Surnet/swagger-jsdoc.git"
+    "url": "https://github.com/jersmart/swagger-jsdoc"
   },
   "keywords": [
     "swagger",
     "openapi",
     "jsdoc"
   ],
-  "author": "https://github.com/Surnet/swagger-jsdoc/graphs/contributors",
+  "author": "https://github.com/jersmart/swagger-jsdoc/graphs/contributors",
   "bugs": {
-    "url": "https://github.com/Surnet/swagger-jsdoc/issues"
+    "url": "https://github.com/jersmart/swagger-jsdoc/issues"
   },
   "resolutions": {
     "minimist": ">=1.2.3"

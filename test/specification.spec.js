@@ -175,6 +175,39 @@ Imbedded within:
     bar
 \`\`\``);
     });
+
+    it('should skip directories that look like files', () => {
+      const buildOutput = specModule.build({
+        swaggerDefinition: {},
+        apis: [
+          path.resolve(__dirname, './files/v3/directoryWithExtension/**/*.js'),
+        ],
+        failOnErrors: true,
+      });
+      console.log('build', buildOutput);
+      expect(buildOutput).toEqual(
+        expect.objectContaining({
+          swagger: '2.0',
+          paths: expect.objectContaining({
+            '/pets/withextension.js/:petId': {
+              get: {
+                description: 'Returns the hello world',
+                responses: {
+                  200: {
+                    description: 'hello world',
+                  },
+                },
+              },
+            },
+          }),
+          definitions: expect.objectContaining({}),
+          responses: expect.objectContaining({}),
+          parameters: expect.objectContaining({}),
+          securityDefinitions: expect.objectContaining({}),
+          tags: [],
+        })
+      );
+    });
   });
 
   describe('organize', () => {

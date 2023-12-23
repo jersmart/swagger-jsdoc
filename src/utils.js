@@ -51,6 +51,9 @@ function extractYamlFromJsDoc(jsDocComment) {
  * @returns {{jsdoc: array, yaml: array}} JSDoc comments and Yaml files
  */
 function extractAnnotations(filePath, encoding = 'utf8') {
+  if (fs.lstatSync(filePath).isDirectory()) {
+    return { yaml: [], jsdoc: [] };
+  }
   const fileContent = fs.readFileSync(filePath, { encoding });
   const ext = path.extname(filePath);
   const jsDocRegex = /\/\*\*([\s\S]*?)\*\//gm;
